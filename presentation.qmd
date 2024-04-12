@@ -1,0 +1,42 @@
+---
+title: "Fonctionnement d'une centrale REP"
+author: "*Corentin DUCLOUX*"
+date: today
+date-format: DD/MM/YYYY
+link-external-icon: true
+title-slide-attributes:
+    data-background-image: "imgs/nuclear_bg.jpeg"
+    data-background-size: cover
+    data-background-opacity: "0.5"
+    data-notes: 
+      "Bonjour à tous, je vais essayer de vous présenter rapidement et du mieux que je peux les     différents circuits, et les principes généraux de fonctionnement d'une centrale nucléaire à eau pressurisée. Compte tenu de mon expertise assez limitée en la matière, j'espère que je ne dirais pas de grosse bêtise. *Image* : Nogent-sur-Seine"
+format: 
+    revealjs:
+        theme: [default, custom.scss]
+        background-transition: fade
+        incremental: true
+        transition: fade
+        navigation-mode: linear
+        footer: "--- **CNEPE**, [**EDF**](https://www.edf.fr/) ---"
+        logo: imgs/edf.png
+        slide-number: true
+---
+
+## Quarto
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+
