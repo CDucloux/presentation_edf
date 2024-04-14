@@ -4,6 +4,7 @@ author: "*Corentin DUCLOUX*"
 date: today
 date-format: DD/MM/YYYY
 link-external-icon: true
+lightbox: true
 title-slide-attributes:
     data-background-image: "imgs/nuclear_bg.jpeg"
     data-background-size: cover
@@ -12,31 +13,245 @@ title-slide-attributes:
       "Bonjour à tous, je vais essayer de vous présenter rapidement et du mieux que je peux les     différents circuits, et les principes généraux de fonctionnement d'une centrale nucléaire à eau pressurisée. Compte tenu de mon expertise assez limitée en la matière, j'espère que je ne dirais pas de grosse bêtise. *Image* : Nogent-sur-Seine"
 format: 
     revealjs:
-        theme: [default, custom.scss]
+        theme: [simple, custom.scss]
         background-transition: fade
-        incremental: true
         transition: fade
         navigation-mode: linear
         footer: "--- **CNEPE**, [**EDF**](https://www.edf.fr/) ---"
         logo: imgs/edf.png
         slide-number: true
+        incremental: true
 ---
 
-## Quarto
+## Objectif d'une centrale de production d'électricité
 
-## Bullets
+> Les centrales thermiques, hydrauliques et nucléaires produisent toutes trois du **courant électrique alternatif**.
 
-When you click the **Render** button a document will be generated that includes:
+$\Rightarrow$ La différence de fonctionnement se situe sur le moyen utilisé pour entraîner la turbine.
 
--   Content authored with markdown
--   Output from executable code
+- Un **combustile fossile** pour les centrales thermiques
+- La **force motrice de l'eau** pour les centrales hydrauliques
+- La **fission nucléaire** pour les centrales nucléaires
 
-## Code
+:::{.notes}
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+Pour ce qui est des centrales thermiques, les combustibles fossiles peuvent être du gaz naturel, du fioul ou bien du charbon. **Même si c'est pas le coeur de la présentation, je trouve intéressant de parler rapidement du fonctionnement de ces centrales.**
 
-```{r}
-1 + 1
-```
+L'objectif est de brûler le combustible pour chauffer l'eau dans une chaudière. Une fois l'eau chauffée, la chaleur va la transformer en vapeur qui actionnera la turbine, entrainant à son tour l'alternateur, 2 pièces essentielles qui sont présentes sur tous ces types de centrale et sur lesquelles je reviendrais en détail dans la présentation du circuit secondaire d'une centrale nucléaire. 
+
+***
+
+Dans une centrale hydroélectrique, pour faire tourner la turbine, il y a deux facteurs : la hauteur de chute et le débit du cours d'eau. Plus la hauteur de chute est importante, plus l'eau descend rapidement et plus le débit du cours d'eau est élevé, plus il va exercer de la force sur la turbine.
+
+***
+
+Enfin, dans une centrale nucléaire, c'est la fission nucléaire qui fournit la chaleur permettant de chauffer l'eau qui sera ensuite transformée en vapeur qui actionnera la turbine puis l'alternateur.
+:::
+
+## Schéma d'une centrale REP
+
+![Schéma des différents bâtiments d'une centrale **REP** -- source [IRSN](https://www.irsn.fr/)](imgs/IRSN_ilots.jpg){fig-align="center"}
+
+:::{.notes}
+Avant de rentrer dans les détails des circuits, des équipements présents et leur spécificité, on va distinguer l'îlot nucléaire de l'îlot conventionnel dans une centrale.
+:::
+
+## Ilot nucléaire
+
+L'îlot nucléaire contient : 
+
+- Le *BR*, bâtiment du réacteur, qui contient l'ensemble du circuit primaire sous pression et les **assemblages combustibles** dans le coeur du réacteur.
+
+- Le *BK*, bâtiment du combustible, où résident les assemblages combustibles usés dans des piscines de désactivation.
+
+- D'autres bâtiments avec les groupes électrogènes de sauvegarde, ou les locaux électriques avec contrôle-commande, etc.
+
+:::{.notes}
+1. Le combustible est renouvelé partiellement lors des arrêts programmés du réacteur dont la périodicité varie entre 12 et 18 mois.
+
+2. Ils y résident pendant au moins un an et sont plongés à 8 mètres de profondeur sous l'eau pour protéger le personnel de la radioactivité.
+:::
+
+## Ilot conventionnel
+
+L'îlot conventionnel contient : 
+
+- La *SDM*, salle des machines, dans laquelle on retrouve le groupe turboalternateur.
+
+- Une source froide.
+
+- Des aéroréfrigérants selon la localisation des centrales.
+
+:::{.notes}
+L'îlot conventionnel rassemble tous les équipements qui permettent de transformer la chaleur issue de la fission nucélaire en électricité, puis de refroidir les circuits. 
+
+La source froide c'est soit un fleuve ou la mer dans le cas d'un circuit ouvert.
+
+Les aéroréfrigérants n'équipent que les centrales en bord de rivière quand la source froide ne permet pas d'évacuer suffisamment la chaleur produite  et pour diminuer la pollution thermique de cette source froide. En faisant mes recherches j'ai appris que certains aéroréfrigérants avaient une taille très réduite, notamment ceux de la centrale de Chinon.A DEVELOPPER
+:::
+
+## Les différents circuits d'une centrale REP
+
+:::callout-note
+## Trois circuits d'eau indépendants
+
+- Le circuit primaire
+- Le circuit secondaire
+- Le circuit tertiaire
+:::
+
+## Le circuit primaire
+
+Le circuit primaire est composé :
+
+- D'une cuve contenant le combustible,
+- De plusieurs générateurs de vapeur,
+- De plusieurs pompes primaires,
+- Un pressuriseur.
+
+:::{.notes}
+Le circuit primaire est la source chaude de l'installation. L'eau du circuit primaire se réchauffe en entrant dans le coeur du réacteur au contact du combustible. Cette eau chaude est ensuite dirigée vers des générateurs de vapeur. 
+
+**Tous les matériels qui composent le circuit primaire sont placés dans une enceinte de confinement : le batiment réacteur, que j'avais évoqué précédemment et dont le but est de conntenir les matières radioactives en cas de fuite.**
+:::
+
+
+## La cuve du réacteur
+
+![Schéma de la cuve du réacteur -- source [IRSN](https://www.irsn.fr/)](imgs/cuve.jpg){width=40%}
+
+:::{.notes}
+
+La cuve est un composant essentiel et qui est irremplaçable. En fonctionnement normal, elle est remplie d'eau sous pression à 155 bars et est plongée sous plusieurs mètres d'eau borée.
+
+**Pourquoi l'eau est mise sous pression ?**
+
+L'eau rentre à 285 °C dans la cuve, et ensuite elle va chauffer en passant dans le cœur du réacteur et en ressortir à plus de 320 °C. Etant donné la température, on veut la maintenir à l'état liquide et éviter la vaporisation.
+
+On voit aussi sur le schéma les assemblages combustibles ici au milieu.
+
+Un assemblage combustible c'est un lot composé de 264 crayons de 4 mètres de long, eux-même composés de pastilles d'uranium enrichi. Ils sont placés dans le cœur du réacteur pour le faire fonctionner.
+
+Il y a aussi des barres de commande qu'on peut insérer ou extraire des assemblages combustible pour piloter la puissance du réacteur. Certaines barres restent en position haute, c'est à dire en dehors du coeur, et en cas de fonctionnement anormal, leur chute permet d'arrêter la réaction.
+:::
+
+## Le combustible
+
+> L'uranium naturel est constitué de plusieurs isotopes dont l'uranium 238 et l'uranium 235.
+
+:::callout-warning
+
+## Problèmes liés à l'uranium naturel
+
+Dans 100 kg d’uranium naturel, il y a **99,3 kg d’uranium 238** pour **0,7 kg d’uranium 235** $\Rightarrow$ L’uranium 235 étant le seul isotope fissile, l'uranium naturel est 0.7% fissile.
+
+Cette proportion n'est pas suffisante pour être utilisable dans un réacteur. 
+:::
+
+**Solution : Uranium Enrichi**
+
+:::{.notes}
+Par fissile je veux dire que sous l’effet de la collision avec un neutron, son noyau se casse, c’est le phénimène de fission qui produit des rayonnements et une grande quantité de chaleur. 
+
+L'objectif va être d'augmenter artificiellement le pourcentage d'uranium 235 entre 3 et 5% au lieu de 0.7 pour le rendre utilisable dans les assemblages combustibles.
+
+:::
+
+## Le modérateur
+
+> Le rôle du modérateur est de ralentir la vitesse des neutrons de 20000 km/s à 2 km/s.
+
+- Plus la vitesse des neutrons est faible, plus la probabilité de capture par le noyau d'uranium 235 est élevée.
+
+:::callout-note
+Dans un REP, le *modérateur* est simplement de l'eau ordinaire.
+:::
+
+## Le caloporteur
+
+> La chaleur libérée par la fission nucléaire doit être évacuée hors du coeur du réacteur par le fluide caloporteur.
+
+:::callout-note
+Dans un REP, le *fluide caloporteur* est de l'eau sous pression.
+:::
+
+:::{.notes}
+L’eau rentre à 285 °C dans la cuve, et ensuite elle va chauffer en passant dans le cœur du réacteur et en ressortir à plus de 320 °C, ensuite elle va céder une partie de la chaleur au niveau d'un échangeur de chaleur (le GV -- générateur de vapeur) pour revenir s'échauffer à nouveau de le coeur et ainsi de suite.
+:::
+
+## Le générateur de vapeur
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Schéma d'un générateur de vapeur -- source [IRSN](https://www.irsn.fr/)](imgs/gv.jpg){width=50%}
+
+:::
+
+::: {.column width="50%"}
+La chaleur extraite du coeur du réacteur par le fluide caloporteur est transmise au circuit eau-vapeur par l'intermédiaire d'échangeurs de chaleur, les **Générateurs de Vapeur**.
+:::
+
+::::
+
+:::{.notes}
+Selon les paliers (900 MégaWatts ou 1300 MégaWatts et plus), il y a 3 ou 4 GV dans le batiment réacteur. 
+
+Le générateur de vapeur fait l'interface entre le circuit primaire et le circuit secondaire, tout en maintenant les 2 circuits complètement séparés, ce qui évite aux particules radioactives contenues dans le fluide caloporteur de contaminer le circuit secondaire.
+
+L'eau du circuit secondaire se vaporise au contact des tubes et va être conduite hors du bâtiment réacteur vers la salle des machines.
+:::
+
+## Le circuit secondaire
+
+Le circuit secondaire est composé :
+
+- De 3-4 corps turbine,
+- D'un condenseur,
+- De groupes sécheurs-surchauffeurs,
+- D'un poste d'eau.
+
+:::{.notes}
+Le circuit secondaire est utilisé pour transformer successivement l'énergie thermique en énergie cinétique (la vitesse de la vapeur) en énergie mécanique (mouvement de rotation) dans la turbine, et en énergie électrique grâce à l'alternateur.
+
+Le CNEPE s'occupe de la partie îlot conventionnel donc on va particulièrement s'intéresser à ces systèmes.
+:::
+
+## La turbine à vapeur
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![Turbine *Arabelle*](imgs/turbine.jpg){width=75%}
+:::
+
+::: {.column width="50%"}
+1. La vapeur rentre dans la turbine par le corps haute pression et actionne les pales de la turbine.
+2. Cycle de réchauffage de la vapeur dans le sécheur-surchauffeur
+3. Condenseur
+
+:::
+
+::::
+
+:::{.notes}
+La pression de la vapeur baisse et elle se charge d'eau. On la réchauffe donc avec de la vapeur haute pression dans le sécheur-surchauffeur. Elle est ensuite conduite dans les 2 ou 3 corps basse pression pour qu'elle actionne les pales des turbines basse pression. 
+
+A la fin on récupère la vapeur dans un condenseur qui la transforme en eau grâce à des tubes du circuit tertiaire. Cette eau est ensuite stockée dans un réservoir, réchauffée et mise sous pression puis envoyée dans le batiment réacteur, plus précisément au niveau des générateurs de vapeur.
+:::
+
+## L'alternateur
+
+
+La production d'electricité dans un alternateur se fait par induction éléctromagnétique.
+
+(Le flux magnétique tourne par rapport à une bobine - les différentes bobines ne bougent pas puisqu'elles sont montées dans le stator)
+
+L'alternateur transforme l'énergie mécanique en énergie électrique
+
+Enroulement inducteur monté autour du rotor qui génère une force électromotrice alternative à travers la bobine.
+
+Une partie mobile, le rotor, est entrainé par la turbine à 1500 tours/minute. Le rotor est constitué de bobines dans lesquelles circule un courant éléctrique continu qui crée un champ magnétique. Autour du rotor, Il y a une autre pièce qui a elle aussi des bobinages, mais elle reste statique : le stator. Quand le rotor tourne à l'intérieur du stator, il y a une variation du champ magnétique qui induit un courant dans le stator.
+
 
 

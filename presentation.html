@@ -7,11 +7,13 @@
 <link href="presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+<link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="presentation_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="presentation_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="presentation_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.551">
 
   <meta name="author" content="Corentin DUCLOUX">
-  <meta name="dcterms.date" content="2024-12-04">
   <title>Fonctionnement d’une centrale REP</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -157,7 +159,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -336,31 +339,378 @@
 </div>
 </div>
 
-  <p class="date">12/04/2024</p>
+  <p class="date">15/04/2024</p>
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
-</section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<section id="objectif-dune-centrale-de-production-délectricité" class="slide level2">
+<h2>Objectif d’une centrale de production d’électricité</h2>
+<blockquote>
+<p>Les centrales thermiques, hydrauliques et nucléaires produisent toutes trois du <strong>courant électrique alternatif</strong>.</p>
+</blockquote>
+<p><span class="math inline">\(\Rightarrow\)</span> La différence de fonctionnement se situe sur le moyen utilisé pour entraîner la turbine.</p>
 <ul>
-<li class="fragment">Content authored with markdown</li>
-<li class="fragment">Output from executable code</li>
+<li class="fragment">Un <strong>combustile fossile</strong> pour les centrales thermiques</li>
+<li class="fragment">La <strong>force motrice de l’eau</strong> pour les centrales hydrauliques</li>
+<li class="fragment">La <strong>fission nucléaire</strong> pour les centrales nucléaires</li>
 </ul>
+<aside class="notes">
+<p>Pour ce qui est des centrales thermiques, les combustibles fossiles peuvent être du gaz naturel, du fioul ou bien du charbon. <strong>Même si c’est pas le coeur de la présentation, je trouve intéressant de parler rapidement du fonctionnement de ces centrales.</strong></p>
+<p>L’objectif est de brûler le combustible pour chauffer l’eau dans une chaudière. Une fois l’eau chauffée, la chaleur va la transformer en vapeur qui actionnera la turbine, entrainant à son tour l’alternateur, 2 pièces essentielles qui sont présentes sur tous ces types de centrale et sur lesquelles je reviendrais en détail dans la présentation du circuit secondaire d’une centrale nucléaire.</p>
+<hr>
+<p>Dans une centrale hydroélectrique, pour faire tourner la turbine, il y a deux facteurs : la hauteur de chute et le débit du cours d’eau. Plus la hauteur de chute est importante, plus l’eau descend rapidement et plus le débit du cours d’eau est élevé, plus il va exercer de la force sur la turbine.</p>
+<hr>
+<p>Enfin, dans une centrale nucléaire, c’est la fission nucléaire qui fournit la chaleur permettant de chauffer l’eau qui sera ensuite transformée en vapeur qui actionnera la turbine puis l’alternateur.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="schéma-dune-centrale-rep" class="slide level2">
+<h2>Schéma d’une centrale REP</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="imgs/IRSN_ilots.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Schéma des différents bâtiments d’une centrale REP – source IRSN"><img data-src="imgs/IRSN_ilots.jpg" class="quarto-figure quarto-figure-center" alt="Schéma des différents bâtiments d’une centrale REP – source IRSN"></a></p>
+</figure>
+</div>
+<figcaption>Schéma des différents bâtiments d’une centrale <strong>REP</strong> – source <a href="https://www.irsn.fr/">IRSN</a></figcaption>
+</figure>
+</div>
+<aside class="notes">
+<p>Avant de rentrer dans les détails des circuits, des équipements présents et leur spécificité, on va distinguer l’îlot nucléaire de l’îlot conventionnel dans une centrale.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ilot-nucléaire" class="slide level2">
+<h2>Ilot nucléaire</h2>
+<p>L’îlot nucléaire contient :</p>
+<ul>
+<li class="fragment"><p>Le <em>BR</em>, bâtiment du réacteur, qui contient l’ensemble du circuit primaire sous pression et les <strong>assemblages combustibles</strong> dans le coeur du réacteur.</p></li>
+<li class="fragment"><p>Le <em>BK</em>, bâtiment du combustible, où résident les assemblages combustibles usés dans des piscines de désactivation.</p></li>
+<li class="fragment"><p>D’autres bâtiments avec les groupes électrogènes de sauvegarde, ou les locaux électriques avec contrôle-commande, etc.</p></li>
+</ul>
+<aside class="notes">
+<ol type="1">
+<li><p>Le combustible est renouvelé partiellement lors des arrêts programmés du réacteur dont la périodicité varie entre 12 et 18 mois.</p></li>
+<li><p>Ils y résident pendant au moins un an et sont plongés à 8 mètres de profondeur sous l’eau pour protéger le personnel de la radioactivité.</p></li>
+</ol>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="ilot-conventionnel" class="slide level2">
+<h2>Ilot conventionnel</h2>
+<p>L’îlot conventionnel contient :</p>
+<ul>
+<li class="fragment"><p>La <em>SDM</em>, salle des machines, dans laquelle on retrouve le groupe turboalternateur.</p></li>
+<li class="fragment"><p>Une source froide.</p></li>
+<li class="fragment"><p>Des aéroréfrigérants selon la localisation des centrales.</p></li>
+</ul>
+<aside class="notes">
+<p>L’îlot conventionnel rassemble tous les équipements qui permettent de transformer la chaleur issue de la fission nucélaire en électricité, puis de refroidir les circuits.</p>
+<p>La source froide c’est soit un fleuve ou la mer dans le cas d’un circuit ouvert.</p>
+<p>Les aéroréfrigérants n’équipent que les centrales en bord de rivière quand la source froide ne permet pas d’évacuer suffisamment la chaleur produite et pour diminuer la pollution thermique de cette source froide. En faisant mes recherches j’ai appris que certains aéroréfrigérants avaient une taille très réduite, notamment ceux de la centrale de Chinon.A DEVELOPPER</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-différents-circuits-dune-centrale-rep" class="slide level2">
+<h2>Les différents circuits d’une centrale REP</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Trois circuits d’eau indépendants</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li class="fragment">Le circuit primaire</li>
+<li class="fragment">Le circuit secondaire</li>
+<li class="fragment">Le circuit tertiaire</li>
+</ul>
 </div>
 </div>
-
-<img src="imgs/edf.png" class="slide-logo r-stretch"><div class="footer footer-default">
+</div>
+</section>
+<section id="le-circuit-primaire" class="slide level2">
+<h2>Le circuit primaire</h2>
+<p>Le circuit primaire est composé :</p>
+<ul>
+<li class="fragment">D’une cuve contenant le combustible,</li>
+<li class="fragment">De plusieurs générateurs de vapeur,</li>
+<li class="fragment">De plusieurs pompes primaires,</li>
+<li class="fragment">Un pressuriseur.</li>
+</ul>
+<aside class="notes">
+<p>Le circuit primaire est la source chaude de l’installation. L’eau du circuit primaire se réchauffe en entrant dans le coeur du réacteur au contact du combustible. Cette eau chaude est ensuite dirigée vers des générateurs de vapeur.</p>
+<p><strong>Tous les matériels qui composent le circuit primaire sont placés dans une enceinte de confinement : le batiment réacteur, que j’avais évoqué précédemment et dont le but est de conntenir les matières radioactives en cas de fuite.</strong></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="la-cuve-du-réacteur" class="slide level2">
+<h2>La cuve du réacteur</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="imgs/cuve.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Schéma de la cuve du réacteur – source IRSN"><img data-src="imgs/cuve.jpg" style="width:40.0%" alt="Schéma de la cuve du réacteur – source IRSN"></a></p>
+<figcaption>Schéma de la cuve du réacteur – source <a href="https://www.irsn.fr/">IRSN</a></figcaption>
+</figure>
+</div>
+<aside class="notes">
+<p>La cuve est un composant essentiel et qui est irremplaçable. En fonctionnement normal, elle est remplie d’eau sous pression à 155 bars et est plongée sous plusieurs mètres d’eau borée.</p>
+<p><strong>Pourquoi l’eau est mise sous pression ?</strong></p>
+<p>L’eau rentre à 285 °C dans la cuve, et ensuite elle va chauffer en passant dans le cœur du réacteur et en ressortir à plus de 320 °C. Etant donné la température, on veut la maintenir à l’état liquide et éviter la vaporisation.</p>
+<p>On voit aussi sur le schéma les assemblages combustibles ici au milieu.</p>
+<p>Un assemblage combustible c’est un lot composé de 264 crayons de 4 mètres de long, eux-même composés de pastilles d’uranium enrichi. Ils sont placés dans le cœur du réacteur pour le faire fonctionner.</p>
+<p>Il y a aussi des barres de commande qu’on peut insérer ou extraire des assemblages combustible pour piloter la puissance du réacteur. Certaines barres restent en position haute, c’est à dire en dehors du coeur, et en cas de fonctionnement anormal, leur chute permet d’arrêter la réaction.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-combustible" class="slide level2">
+<h2>Le combustible</h2>
+<blockquote>
+<p>L’uranium naturel est constitué de plusieurs isotopes dont l’uranium 238 et l’uranium 235.</p>
+</blockquote>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Problèmes liés à l’uranium naturel</strong></p>
+</div>
+<div class="callout-content">
+<p>Dans 100 kg d’uranium naturel, il y a <strong>99,3 kg d’uranium 238</strong> pour <strong>0,7 kg d’uranium 235</strong> <span class="math inline">\(\Rightarrow\)</span> L’uranium 235 étant le seul isotope fissile, l’uranium naturel est 0.7% fissile.</p>
+<p>Cette proportion n’est pas suffisante pour être utilisable dans un réacteur.</p>
+</div>
+</div>
+</div>
+<p><strong>Solution : Uranium Enrichi</strong></p>
+<aside class="notes">
+<p>Par fissile je veux dire que sous l’effet de la collision avec un neutron, son noyau se casse, c’est le phénimène de fission qui produit des rayonnements et une grande quantité de chaleur.</p>
+<p>L’objectif va être d’augmenter artificiellement le pourcentage d’uranium 235 entre 3 et 5% au lieu de 0.7 pour le rendre utilisable dans les assemblages combustibles.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-modérateur" class="slide level2">
+<h2>Le modérateur</h2>
+<blockquote>
+<p>Le rôle du modérateur est de ralentir la vitesse des neutrons de 20000 km/s à 2 km/s.</p>
+</blockquote>
+<ul>
+<li class="fragment">Plus la vitesse des neutrons est faible, plus la probabilité de capture par le noyau d’uranium 235 est élevée.</li>
+</ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Dans un REP, le <em>modérateur</em> est simplement de l’eau ordinaire.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="le-caloporteur" class="slide level2">
+<h2>Le caloporteur</h2>
+<blockquote>
+<p>La chaleur libérée par la fission nucléaire doit être évacuée hors du coeur du réacteur par le fluide caloporteur.</p>
+</blockquote>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Dans un REP, le <em>fluide caloporteur</em> est de l’eau sous pression.</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>L’eau rentre à 285 °C dans la cuve, et ensuite elle va chauffer en passant dans le cœur du réacteur et en ressortir à plus de 320 °C, ensuite elle va céder une partie de la chaleur au niveau d’un échangeur de chaleur (le GV – générateur de vapeur) pour revenir s’échauffer à nouveau de le coeur et ainsi de suite.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-générateur-de-vapeur" class="slide level2">
+<h2>Le générateur de vapeur</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="imgs/gv.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Schéma d’un générateur de vapeur – source IRSN"><img data-src="imgs/gv.jpg" style="width:50.0%" alt="Schéma d’un générateur de vapeur – source IRSN"></a></p>
+<figcaption>Schéma d’un générateur de vapeur – source <a href="https://www.irsn.fr/">IRSN</a></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p>La chaleur extraite du coeur du réacteur par le fluide caloporteur est transmise au circuit eau-vapeur par l’intermédiaire d’échangeurs de chaleur, les <strong>Générateurs de Vapeur</strong>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Selon les paliers (900 MégaWatts ou 1300 MégaWatts et plus), il y a 3 ou 4 GV dans le batiment réacteur.</p>
+<p>Le générateur de vapeur fait l’interface entre le circuit primaire et le circuit secondaire, tout en maintenant les 2 circuits complètement séparés, ce qui évite aux particules radioactives contenues dans le fluide caloporteur de contaminer le circuit secondaire.</p>
+<p>L’eau du circuit secondaire se vaporise au contact des tubes et va être conduite hors du bâtiment réacteur vers la salle des machines.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="le-circuit-secondaire" class="slide level2">
+<h2>Le circuit secondaire</h2>
+<p>Le circuit secondaire est composé :</p>
+<ul>
+<li class="fragment">De 3-4 corps turbine,</li>
+<li class="fragment">D’un condenseur,</li>
+<li class="fragment">De groupes sécheurs-surchauffeurs,</li>
+<li class="fragment">D’un poste d’eau.</li>
+</ul>
+<aside class="notes">
+<p>Le circuit secondaire est utilisé pour transformer successivement l’énergie thermique en énergie cinétique (la vitesse de la vapeur) en énergie mécanique (mouvement de rotation) dans la turbine, et en énergie électrique grâce à l’alternateur.</p>
+<p>Le CNEPE s’occupe de la partie îlot conventionnel donc on va particulièrement s’intéresser à ces systèmes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="la-turbine-à-vapeur" class="slide level2">
+<h2>La turbine à vapeur</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="imgs/turbine.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Turbine Arabelle"><img data-src="imgs/turbine.jpg" style="width:75.0%" alt="Turbine Arabelle"></a></p>
+<figcaption>Turbine <em>Arabelle</em></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment">La vapeur rentre dans la turbine par le corps haute pression et actionne les pales de la turbine.</li>
+<li class="fragment">Cycle de réchauffage de la vapeur dans le sécheur-surchauffeur</li>
+<li class="fragment">Condenseur</li>
+</ol>
+</div>
+</div>
+<aside class="notes">
+<p>La pression de la vapeur baisse et elle se charge d’eau. On la réchauffe donc avec de la vapeur haute pression dans le sécheur-surchauffeur. Elle est ensuite conduite dans les 2 ou 3 corps basse pression pour qu’elle actionne les pales des turbines basse pression.</p>
+<p>A la fin on récupère la vapeur dans un condenseur qui la transforme en eau grâce à des tubes du circuit tertiaire. Cette eau est ensuite stockée dans un réservoir, réchauffée et mise sous pression puis envoyée dans le batiment réacteur, plus précisément au niveau des générateurs de vapeur.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lalternateur" class="slide level2">
+<h2>L’alternateur</h2>
+<p>La production d’electricité dans un alternateur se fait par induction éléctromagnétique.</p>
+<p>(Le flux magnétique tourne par rapport à une bobine - les différentes bobines ne bougent pas puisqu’elles sont montées dans le stator)</p>
+<p>L’alternateur transforme l’énergie mécanique en énergie électrique</p>
+<p>Enroulement inducteur monté autour du rotor qui génère une force électromotrice alternative à travers la bobine.</p>
+<p>Une partie mobile, le rotor, est entrainé par la turbine à 1500 tours/minute. Le rotor est constitué de bobines dans lesquelles circule un courant éléctrique continu qui crée un champ magnétique. Autour du rotor, Il y a une autre pièce qui a elle aussi des bobinages, mais elle reste statique : le stator. Quand le rotor tourne à l’intérieur du stator, il y a une variation du champ magnétique qui induit un courant dans le stator.</p>
+<div class="quarto-auto-generated-content">
+<p><img src="imgs/edf.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p>— <strong>CNEPE</strong>, <a href="https://www.edf.fr/"><strong>EDF</strong></a> —</p>
+</div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Schéma des différents bâtiments d’une centrale <strong>REP</strong> – source <a href="https://www.irsn.fr/">IRSN</a></span>
+<span class="glightbox-desc lightbox-desc-2">Schéma de la cuve du réacteur – source <a href="https://www.irsn.fr/">IRSN</a></span>
+<span class="glightbox-desc lightbox-desc-3">Schéma d’un générateur de vapeur – source <a href="https://www.irsn.fr/">IRSN</a></span>
+<span class="glightbox-desc lightbox-desc-4">Turbine <em>Arabelle</em></span>
 </div>
 </section>
     </div>
@@ -389,7 +739,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -574,44 +923,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
@@ -688,10 +999,29 @@
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+              // default icon
+              link.classList.add("external");
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -701,8 +1031,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -716,7 +1055,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -756,22 +1099,33 @@
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // default icon
-              link.classList.add("external");
-          }
-        }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>
